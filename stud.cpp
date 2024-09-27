@@ -29,18 +29,38 @@ void vidurkis(Stud &Lok) {
 }
 
 
+void mediana(Stud &Lok) {
+    if (!Lok.ND.empty()) {
+        sort(Lok.ND.begin(), Lok.ND.end());
+        int size = Lok.ND.size();
+        if (size % 2 == 0) {
+            Lok.med = (Lok.ND[size / 2 - 1] + Lok.ND[size / 2]) / 2.0;
+        } else {
+            Lok.med = Lok.ND[size / 2];
+        }
+    } else {
+        Lok.med = 0.0;
+    }
+}
+
 void galutinisvid(Stud &Lok) {
     vidurkis(Lok);
     Lok.rezvid = 0.4 * Lok.vid + 0.6 * Lok.egz;
 }
 
+void galutinismed(Stud &Lok) {
+    mediana(Lok);
+    Lok.rezmed = 0.4 * Lok.med + 0.6 * Lok.egz;
+}
 
 
 void output(Stud Lok) {
     cout << left << setw(18) << Lok.vardas
          << setw(20) << Lok.pavarde
          << fixed << setprecision(2)
-         << Lok.rezvid << endl;
+         << Lok.rezvid << "                      "
+         << fixed << setprecision(2)
+         << Lok.rezmed << endl;
 }
 
 void val(Stud &Lok) {
@@ -48,5 +68,6 @@ void val(Stud &Lok) {
     Lok.pavarde.clear();
     Lok.ND.clear();
     Lok.vid = 0;
+    Lok.rezmed = 0;
     Lok.rezvid = 0;
 }

@@ -13,6 +13,7 @@ void output(Stud Lok);
 void val(Stud &Lok);
 void vidurkis(Stud &Lok);
 void galutinisvid(Stud &Lok);
-
+void mediana(Stud &Lok);
+void galutinismed(Stud &Lok);
 
 #endif // STUD_H_INCLUDED
