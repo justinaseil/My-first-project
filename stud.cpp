@@ -1,14 +1,58 @@
 #include "stud.h"
 
 
+void nuskaitymas(vector<Stud> &students, const string &filename) {
+    ifstream file(filename);
+    if (!file.is_open()) {
+        cout << "Error opening file." << endl;
+        return;
+    }
+
+    string header;
+    getline(file, header);
+
+    string line;
+    while (getline(file, line)) {
+        istringstream ss(line);
+        Stud student;
+        ss >> student.vardas >> student.pavarde;
+
+        double grade;
+        while (ss >> grade) {
+            student.ND.push_back(grade);
+        }
+
+        if (!student.ND.empty()) {
+            student.egz = student.ND.back();
+            student.ND.pop_back();
+        }
+
+        students.push_back(student);
+    }
+
+    file.close();
+}
+
+
 void ived(Stud &Lok) {
-    cout << "Input Name, Surname and Exam point: ";
-    cin >> Lok.vardas >> Lok.pavarde >> Lok.egz;
+    cout << "Input Name and Surname: ";
+    cin >> Lok.vardas >> Lok.pavarde;
+
+    while (true) {
+        cout << "Imput Exam points: ";
+        if (cin >> Lok.egz && Lok.egz >= 0 && Lok.egz <= 10) {
+            break;
+        } else {
+            cout << "Error.Try again" << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
+    }
+
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     double grade;
     cout << "Input homework grades and press enter twice to finish: " << endl;
-
     while (true) {
         string input;
         getline(cin, input);
@@ -17,13 +61,16 @@ void ived(Stud &Lok) {
         }
         try {
             grade = stod(input);
-            Lok.ND.push_back(grade);
+            if (grade >= 0 && grade <= 10) {
+                Lok.ND.push_back(grade);
+            } else {
+                cout << "Error. Enter number from 0 to 10..." << endl;
+            }
         } catch (...) {
-            cout << "Error. Try again" << endl;
+            cout << "Error. Enter number from 0 to 10..." << endl;
         }
     }
 }
-
 void autom(Stud &Lok) {
     cout << "Input Name, Surname: ";
     cin >> Lok.vardas >> Lok.pavarde;
