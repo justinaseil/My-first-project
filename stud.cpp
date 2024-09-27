@@ -24,6 +24,18 @@ void ived(Stud &Lok) {
     }
 }
 
+void autom(Stud &Lok) {
+    cout << "Input Name, Surname: ";
+    cin >> Lok.vardas >> Lok.pavarde;
+
+    srand(time(0));
+    Lok.egz = rand() % 10 + 1;
+
+    for (int j = 0; j < 12; ++j) {
+        Lok.ND.push_back(rand() % 10 + 1);
+    }
+}
+
 
 void vidurkis(Stud &Lok) {
     if (!Lok.ND.empty()) {

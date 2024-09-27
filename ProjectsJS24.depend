@@ -3,7 +3,7 @@
 	"mylib.h"
 	"stud.h"
 
-1727451905 /mif/stud3/2023/juse0005/c++/ProjectsJS24/mylib.h
+1727452656 /mif/stud3/2023/juse0005/c++/ProjectsJS24/mylib.h
 	<iostream>
 	<string>
 	<vector>
@@ -11,10 +11,11 @@
 	<iomanip>
 	<algorithm>
 	<limits>
+	<random>
 
-1727451543 /mif/stud3/2023/juse0005/c++/ProjectsJS24/stud.h
+1727452656 /mif/stud3/2023/juse0005/c++/ProjectsJS24/stud.h
 	"mylib.h"
 
-1727451543 source:/mif/stud3/2023/juse0005/c++/ProjectsJS24/stud.cpp
+1727452607 source:/mif/stud3/2023/juse0005/c++/ProjectsJS24/stud.cpp
 	"stud.h"
 

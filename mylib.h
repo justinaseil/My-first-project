@@ -8,6 +8,11 @@
 #include <iomanip>
 #include <algorithm>
 #include <limits>
+#include <random>
+#include <cstdlib>
+#include <ctime>
+#include <fstream>
+#include <sstream>
 
 using std::endl;
 using std::cout;
@@ -23,6 +28,9 @@ using std::setprecision;
 using std::streamsize;
 using std::stod;
 using std::numeric_limits;
+using std::ifstream;
+using std::getline;
+using std::istringstream;
 
 
 
