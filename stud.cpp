@@ -1,23 +1,28 @@
 #include "stud.h"
 
 
-
 void ived(Stud &Lok) {
-    cout << "Input Name, Surname and Exam points: ";
+    cout << "Input Name, Surname and Exam point: ";
     cin >> Lok.vardas >> Lok.pavarde >> Lok.egz;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-    int b;
     double grade;
-    cout << "How many homework grades do you have? ";
-    cin >> b;
+    cout << "Input homework grades and press enter twice to finish: " << endl;
 
-    cout << "Enter the homework grades: ";
-    for (int i = 0; i < b; i++) {
-        cin >> grade;
-        Lok.ND.push_back(grade);
+    while (true) {
+        string input;
+        getline(cin, input);
+        if (input.empty()) {
+            break;
+        }
+        try {
+            grade = stod(input);
+            Lok.ND.push_back(grade);
+        } catch (...) {
+            cout << "Error. Try again" << endl;
+        }
     }
 }
-
 
 
 void vidurkis(Stud &Lok) {

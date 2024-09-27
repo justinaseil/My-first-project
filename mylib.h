@@ -7,6 +7,7 @@
 #include <numeric>
 #include <iomanip>
 #include <algorithm>
+#include <limits>
 
 using std::endl;
 using std::cout;
@@ -14,10 +15,14 @@ using std::cin;
 using std::string;
 using std::vector;
 using std::accumulate;
+using std::sort;
 using std::fixed;
 using std::left;
 using std::setw;
 using std::setprecision;
+using std::streamsize;
+using std::stod;
+using std::numeric_limits;
 
 
 
