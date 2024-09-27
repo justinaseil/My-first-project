@@ -14,11 +14,20 @@ int main() {
         string filename;
         cout << "Enter the filename: ";
         getline(cin, filename);
-        nuskaitymas(vec1, filename);
+        try {
+            nuskaitymas(vec1, filename);
+        } catch (const std::exception &e) {
+            cout << "Error" << e.what() << endl;
+            return 1;
+        }
     } else {
         cout << "How many students do you have? ";
         int n;
-        cin >> n;
+        while (!(cin >> n) || n < 0) {
+            cout << "Error. Please enter a valid number " << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        }
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
         for (int i = 0; i < n; i++) {

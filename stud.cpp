@@ -4,8 +4,7 @@
 void nuskaitymas(vector<Stud> &students, const string &filename) {
     ifstream file(filename);
     if (!file.is_open()) {
-        cout << "Error opening file." << endl;
-        return;
+        throw std::runtime_error("Error opening file");
     }
 
     string header;
@@ -19,12 +18,18 @@ void nuskaitymas(vector<Stud> &students, const string &filename) {
 
         double grade;
         while (ss >> grade) {
-            student.ND.push_back(grade);
+            if (grade >= 0 && grade <= 10) {
+                student.ND.push_back(grade);
+            } else {
+                throw std::runtime_error("Invalid grade in file");
+            }
         }
 
         if (!student.ND.empty()) {
             student.egz = student.ND.back();
             student.ND.pop_back();
+        } else {
+            throw std::runtime_error("No grades found in file");
         }
 
         students.push_back(student);
@@ -39,7 +44,7 @@ void ived(Stud &Lok) {
     cin >> Lok.vardas >> Lok.pavarde;
 
     while (true) {
-        cout << "Imput Exam points: ";
+        cout << "Input Exam points: ";
         if (cin >> Lok.egz && Lok.egz >= 0 && Lok.egz <= 10) {
             break;
         } else {
